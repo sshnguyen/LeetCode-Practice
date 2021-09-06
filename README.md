@@ -1,7 +1,7 @@
 # [LeetCode](https://leetcode.com/problemset/all/)
 
 ![Language](https://img.shields.io/badge/language-Python%20%2F%20Java-orange.svg)&nbsp;
-My practice solutions to leetcode questions.
+[My](https://leetcode.com/seansonhung/) practice solutions to leetcode questions.
 
 ## Algorithms
 * [Bit Manipulation](https://github.com/seansonhung/LeetCode-Practice#bit-manipulation)
