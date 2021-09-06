@@ -1,7 +1,8 @@
 # [LeetCode](https://leetcode.com/problemset/all/)
 
 ![Language](https://img.shields.io/badge/language-Python%20%2F%20Java-orange.svg)&nbsp;
-[My](https://leetcode.com/seansonhung/) practice solutions to leetcode questions.
+
+[My](https://leetcode.com/seansonhung/) practice solutions to leetcode questions. Aiming for a question a day frequency.
 
 ## Algorithms
 * [Bit Manipulation](https://github.com/seansonhung/LeetCode-Practice#bit-manipulation)
@@ -65,6 +66,7 @@
 ## Hash Table
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
 |-----|---------------- | --------------- | --------------- | --------------- | ------------- |-----|
+0001| [Two Sum](https://leetcode.com/problems/two-sum/)  | [Python](./Python/two-sum.py)  | _O(n)_         | _O(n)_          | Easy         ||
 
 ## Math
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
