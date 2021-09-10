@@ -42,6 +42,7 @@
 ## String
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
 |-----|---------------- | --------------- | --------------- | --------------- | ------------- |-----|
+0002| [Longest Substring Without Repeating](https://leetcode.com/problems/longest-substring-without-repeating-characters/)  | [Python](./Python/longest-substring-wo-repeating-chars.py)  | _O(n^2)_         | _O(n)_          | Medium         | Could use Hash table to reduce complexity |
 
 ## Linked List
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
