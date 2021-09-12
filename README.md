@@ -73,6 +73,7 @@
 ## Math
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
 |-----|---------------- | --------------- | --------------- | --------------- | ------------- |-----|
+0007| [Reverse Integer](https://leetcode.com/problems/reverse-integer/)  | [Python](./Python/reverse-integer.py)  | _O(log(n))_         | _O(1)_          | Easy         || Can use Math or String manipulation
 
 ## Sort
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
