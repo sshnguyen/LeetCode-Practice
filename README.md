@@ -38,6 +38,7 @@
 ## Array
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
 |-----|---------------- | --------------- | --------------- | --------------- | ------------- |-----|
+0004| [Median Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)  | [Java](./Java/medianTwoSortedArray)  | _O(m+n)_         | _O(1)_          | Hard        || Not quite the O(log(m+n)) solution. Just array traversal.
 
 ## String
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
