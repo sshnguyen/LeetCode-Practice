@@ -38,16 +38,14 @@
 ## Array
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
 |-----|---------------- | --------------- | --------------- | --------------- | ------------- |-----|
-0004| [Median Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)  | [Java](./Java/medianTwoSortedArray.java)  | _O(m+n)_         | _O(1)_          | Hard        || Not quite the O(log(m+n)) solution. Just array traversal between the two array.
-
-0011| [Container With Most Water](https://leetcode.com/problems/container-with-most-water/)  | [Python](./Python/container_most_water.py)  | _O(n)_         | _O(1)_          | Medium        || Start at two ends and looks to update the end with lower height
+0004| [Median Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)  | [Java](./Java/medianTwoSortedArray.java)  | _O(m+n)_         | _O(1)_          | Hard        | Not quite the O(log(m+n)) solution. Just array traversal between the two array. ||
+0011| [Container With Most Water](https://leetcode.com/problems/container-with-most-water/)  | [Python](./Python/container_most_water.py)  | _O(n)_         | _O(1)_          | Medium        | Start at two ends and looks to update the end with lower height ||
 
 ## String
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
 |-----|---------------- | --------------- | --------------- | --------------- | ------------- |-----|
-0002| [Longest Substring Without Repeating](https://leetcode.com/problems/longest-substring-without-repeating-characters/)  | [Python](./Python/longest-substring-wo-repeating-chars.py)  | _O(n^2)_         | _O(n)_          | Medium         | Could use Hash table to reduce complexity |
-
-0005| [Longest Palindrome Substring](https://leetcode.com/problems/longest-palindromic-substring/)  | [Java](./Java/longestPalindromeSubstring.java)  | _O(n^2)_         | _O(1)          | Medium         | There are faster algorithms like Manacher's Algorithm |
+0003| [Longest Substring Without Repeating](https://leetcode.com/problems/longest-substring-without-repeating-characters/)  | [Python](./Python/longest-substring-wo-repeating-chars.py)  | _O(n^2)_         | _O(n)_          | Medium         | Could use Hash table to reduce complexity |
+0005 | [Longest Palindrome Substring](https://leetcode.com/problems/longest-palindromic-substring/)  | [Java](./Java/longestPalindromeSubstring.java)  | _O(n^2)_         | _O(1)          | Medium         | There are faster algorithms like Manacher's Algorithm |
 
 ## Linked List
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
