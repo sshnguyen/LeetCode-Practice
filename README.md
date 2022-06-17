@@ -118,6 +118,7 @@
 ## Greedy
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
 |-----|---------------- | --------------- | --------------- | --------------- | ------------- |-----|
+0045| [Jump Game 2](https://leetcode.com/problems/jump-game-ii/)  | [Python](./Python/jump_game_2.py)  | _O(n)_         | _O(1)_          | Medium         ||
 
 ## Graph
 |  #  | Title           |  Solution       |  Time           | Space           | Difficulty    | Note| 
