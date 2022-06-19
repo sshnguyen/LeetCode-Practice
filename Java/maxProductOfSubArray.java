@@ -1,36 +1,44 @@
 class Solution {
-    //breaking down the examples into cases
-    //the max subarray has to be ended by a -int at one end of the subarray because
-    // if -int at both end then it can be added to the subarray, same as other 
-    // combination of -ve max +ve, +ve max -ve, +ve max +ve, in these cases +ve can be 
-    //extended to the subarray. By these cases the subarray starts either on left, or
-    //right side and we can calculate by traversing left, and right then compare.
-    //outlier is when there's a 0 in the list, then the max sub array can start before or after it. so we need to traverse the entire list and consider it as like a start
-    
-    public int max(int a, int b) { return (a > b) ? a : b; }
-    
-    public int maxProduct(int[] nums) {
-        int maxLeft = Integer.MIN_VALUE;
-        int maxRight = Integer.MIN_VALUE;
-        int currProductLeft = 1;
-        int currProductRight = 1;
-        //find max prod if the subarray starts on the left
-        for (int i = 0; i < nums.length; i++){
-            currProductLeft = currProductLeft * nums[i];
-            maxLeft = max(currProductLeft, maxLeft);
-            if(currProductLeft == 0) {  //if at anytime currenProd = 0 reset it to 1
-                currProductLeft = 1;
+    // for each element, we can look into the rest of the array for two other elements that all add to 0
+    // This will be turn into 2 sum question.To do this, we sort the list at the begining,
+    // then for each element, look for the two elements after that index as the
+    // other two numbers has to be bigger since we sorted the list.
+    // If the element is positive then the solution does not exist in a sorted array.
+    // * we need to skips duplicate elements after it's been added as a solution once
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> solution =new ArrayList<>();
+        if (nums.length < 3){
+            return solution;
+        }
+        //sort the list to be use later
+        Arrays.sort(nums);
+        //for each element, turn the question into 2 sum question
+        for (int i = 0; i < nums.length - 1; i ++){
+            if (nums[i] > 0){
+                    return solution;
+            }
+            //skip elements that we already worked with
+            if(i==0||nums[i]!=nums[i-1]){
+                int target = nums[i];
+                int leftPointer = i + 1;
+                int rightPointer = nums.length - 1;
+                while(leftPointer < rightPointer){
+                    if (nums[leftPointer] + nums[rightPointer] + target > 0){
+                        rightPointer --;
+                    } else if (nums[leftPointer] + nums[rightPointer] + target < 0){
+                        leftPointer ++;
+                    } else{
+                        solution.add(Arrays.asList(nums[i],nums[leftPointer],nums[rightPointer]));
+                        //we skip duplicate elements
+                        while(leftPointer < rightPointer&&nums[leftPointer]==nums[leftPointer+1])leftPointer++;
+                        while(leftPointer < rightPointer&&nums[rightPointer]==nums[rightPointer-1])rightPointer--;
+                        rightPointer --;
+                        leftPointer ++;
+                    }
+                }
             }
         }
-        //find max prod if the subarray start on the right
-        for (int i = nums.length - 1; i >= 1; i--){
-            currProductRight = currProductRight * nums[i];
-            maxRight = max(currProductRight, maxRight);
-            if(currProductRight == 0) {  //if at anytime currenProd = 0 reset it to 1
-                currProductRight = 1;
-            }
-        } 
-        return max(maxLeft, maxRight);
         
+        return solution;
     }
 }
