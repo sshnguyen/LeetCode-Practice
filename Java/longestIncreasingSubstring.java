@@ -10,9 +10,6 @@ class Solution {
         int length = nums.length;
         int[] dp = new int [length];
         int max = 1;
-        if(length == 1){
-            return 1;
-        }
         dp[0] = 1;
         // loop through all elements, starting at second,
         // check the elements previous to it, updating its dp, and max as needed
