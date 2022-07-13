@@ -1,22 +1,20 @@
 class Solution {
     //iterative dp
+    class Solution {
     public int climbStairs(int n) {
-     int[] dp = new int[n+1];
-        dp[0]=1;
+        // distinctWays[i] store the number of distinct ways to reach i steps.
+        int[] distinctWays = new int[n + 1];
+        //base cases
+        distinctWays[0] = 1;
+        distinctWays[1] = 1;
         
-        for(int i=1;i<=n;i++){
-            if(i==1){
-                dp[i]=dp[i-1];
-            }
-            else if(i==2){
-                dp[i]=dp[i-1] + dp[i-2];    
-            }
-            else{
-                dp[i] = dp[i-1] + dp[i-2];
-            }
+        for (int i = 2; i <= n; i++){
+            distinctWays[i] = distinctWays[i - 2] + distinctWays[i - 1];
         }
-        return dp[n];     
+        
+        return distinctWays[n];
     }
+}
     //Memoization
     public int climbStairs(int n) {
         return countPaths(n,new int[n+1]);
