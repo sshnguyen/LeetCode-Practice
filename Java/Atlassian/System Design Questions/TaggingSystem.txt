@@ -1,0 +1,7 @@
+Design a tagging system for a distributed content service.
+
+Users can tag content in some microservice they're interacting with,
+the tagging service has to save the tag and provide extra functionality like get the
+most popular tags and some others.
+
+ Describe what technologies should be used, how the microservices would communicate.
