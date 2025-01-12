@@ -1,0 +1,49 @@
+
+* Descriptions:
+
+Rate limiters are a way to limit the number of requests that can be made to a specific endpoint. In large-scale systems, rate limiting is commonly used to protect underlying services and resources.
+
+Hard rate limiter — rejects all requests which are above limit
+Soft rate limiter — allows limit to be exceeded for short period of time
+
+* Reasons to use rate limiters:
+    - Eliminate spikiness in traffic : Prevent intentional/unintentional traffic by some entities, sending a large number of requests.
+
+    - Security : By limiting the number of requests/tries for passwords, we can protect the services from unauthenticated users/hackers using brute-force.
+
+    - Prevent resource starvation : The most common reason for rate limiting is to improve the availability of API-based services by avoiding resource starvation. Load based denial of service (doS) attacks can be prevented if rate limiting is applied. Other users are not starved even when one user bombards the API with loads of requests.
+
+    - Prevent bad design practices and abusive use : Without API limits, developers of client applications would use sloppy development tactics, for example : requesting the same information over and over again.
+
+* Client vs Server vs Middleware
+    - Client-side: Implemented on the client application.
+    - Server-side: Implemented directly on the server.
+    - Middleware: Implemented within the request processing pipeline, typically in a web framework like nodejs or expressjs.
+
+    - Client-side: Typically uses timers or counters within the client application.
+    - Server-side: Uses algorithms or server configurations to limit requests.
+    - Middleware: Uses middleware functions in web frameworks, often with the help of libraries or algorithms like server.
+
+    Client vs Server Implementation Pros and Cons:
+    - Client Pros
+        - Reduces Load on Server: By limiting requests at the client-side, you can reduce the number of requests that actually reach the server, thus reducing server load.
+        - Immediate Feedback: Users can get immediate feedback if they are making too many requests, as the rate limiting logic is implemented directly in the client application.
+        - Network Efficiency: Helps in reducing unnecessary network traffic, as excessive requests are blocked before they are even sent.
+    - Client Cons
+        - Manipulation Risk: Rate limiting logic on the client-side can be bypassed or manipulated by users with technical knowledge, making it unreliable for critical applications.
+        - Limited Control: The server has limited control over the rate limiting process, which might not be sufficient for protecting server resources.
+    - Server Pros
+        - Strong Protection: Provides strong and reliable protection for the server by ensuring rate limits are enforced irrespective of the client’s behavior.
+        - Centralized Control: Centralizes rate limiting logic, making it easier to manage, update, and enforce across all clients.
+        - Security: Reduces the risk of malicious users bypassing the rate limit, as the logic is hidden and protected on the server side.
+        - Flexibility: Allows for more sophisticated and dynamic rate limiting strategies based on various factors such as user roles, IP addresses, or API keys.
+    - Server Cons
+        - Increased Server Load: Rate limiting logic on the server can add some overhead to request processing, potentially affecting performance.
+        - Latency: There might be some added latency in handling requests as each request needs to be checked against the rate limiting rules.
+
+* Common Rate Limiter Algorithms
+    - token bucket
+    - leaky bucket
+    - fixed window counter
+    - sliding window log
+    - sliding window counter
