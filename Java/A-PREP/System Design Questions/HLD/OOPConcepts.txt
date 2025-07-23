@@ -1,0 +1,17 @@
+Core OOP Principles
+Encapsulation – Bundling data (fields) and methods into a single unit (class) and restricting direct access to some details (e.g., using private fields with getters and setters).
+Abstraction – Hiding implementation details and exposing only the necessary functionality (e.g., an abstract class or interface).
+Inheritance – Allowing one class to inherit fields and methods from another, promoting code reuse (e.g., class Car extends Vehicle).
+Polymorphism – Enabling multiple implementations of the same interface or method (e.g., method overriding in subclasses).
+
+Supporting OOP Concepts
+Class – A blueprint for creating objects, defining attributes (fields) and behaviors (methods).
+Object – An instance of a class with unique values assigned to its attributes.
+Interface – A contract that a class must follow, defining methods without implementation.
+Abstract Class – A class that cannot be instantiated but can provide default behavior for subclasses.
+Composition – A design principle where a class contains instances of other classes rather than inheriting from them (has-a relationship).
+Association – A general relationship between two classes, where objects interact but don’t own each other.
+Aggregation – A weaker form of association where one class contains another but doesn’t control its lifecycle.
+Delegation – Passing a task to another object instead of handling it within a class.
+Cohesion – The degree to which a class’s methods and fields are related; high cohesion is preferred.
+Coupling – The dependency between classes; low coupling is preferred for maintainability.

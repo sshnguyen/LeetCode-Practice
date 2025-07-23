@@ -1,0 +1,2 @@
+Design a news aggregator app (eg: Google News). Requirements: 1M MAU 50000+ publishers publishing 100 articles/day Time of article to publish 
+--> show up in feed: 5-10 minutes delay tolerance Users read articles in personalized feed based on their categories/publishers of interest in morning and evening

@@ -1,0 +1,21 @@
+Part 1 Design and implement an in-memory key value data store. This data store should be able to support some basic operations such as Get, Set, and Delete.
+
+* CLARIFYING QUESTIONS:
+  1.What is the expected behavior for get or delete when a key does not exist? Should it return null, an empty string, or throw an exception?
+
+
+
+Part 2:
+Add support for transactions - Begin, Commit, and Rollback.
+A transaction is created with the Begin command and creates a context for the other operations to happen. Until the active transaction is committed using the Commit command, those operations do not persist. Rollback command throws away any changes made by those operations in the context of the active transaction.
+Every Begin() will always come with a Commit() or Rollback().
+
+* CLARIFYING QUESTIONS: 
+  1.How should we handle a commit, rollback operation when no transaction is active? throw error?
+
+Part 3:
+Add support for nested transactions. The newly spawned transaction inherits the variables from its parent transaction. Changes made in the context of a child transaction will reflect in the parent transaction as well. Once commit is called on the parent transaction, all transactions will be persisted to the global storage.
+Note that commit on a child transaction does not affect global state. If the parent is rolled back, the global state should remain unchanged.
+  * CLARIFYING QUESTIONS: 
+  What happens if a parent transaction is rolled back but a child transaction is committed?
+   Changes made in the context of a child transaction will reflect in the parent transaction is this after the child commit or as it changes?

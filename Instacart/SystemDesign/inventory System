@@ -1,0 +1,13 @@
+
+
+Design a scalable system for Instacart with user ordering, real-time inventory updates, shopper assignment, and efficient delivery logistics.
+
+Inventory System
+Design inventory system (add stock, reserve stock, fulfill stock)
+
+The system design round focused on API and database design for managing categories and products, where I proposed optimizations like pagination and response compression.
+
+Systems Design (Asked to design a product catalog.)
+
+
+Be prepared to be asked all sorts of questions dealing with special edge cases, robustness of the design, handling rush hours, etc.

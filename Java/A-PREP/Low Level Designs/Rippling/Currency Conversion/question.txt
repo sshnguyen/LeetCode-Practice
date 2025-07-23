@@ -1,0 +1,40 @@
+Given a list of objects which are [currency_1, currency_2, the conversion rate from currency_1 to currency_2], return the rate between any two given currencies.
+
+Example:
+
+Input:
+[
+['USD', 'JPY', 110], 
+['USD', 'AUD', 1.45], 
+['JPY', 'GBP', 0.0070]
+]
+
+Given currencies: 'GBP', 'AUD'
+
+Output: 1.89
+
+How to find the maximum conversion rate between any two given currencies and print the path?
+
+CLARIFYING QUESTIONS:
+Is it possible for the graph to have cycles? I assume not
+Can the conversion rates be zero or negative?
+What should happen if no conversion path exists between two currencies?
+
+
+SOLUTION:
+
+*The problem is modeled as a graph:
+
+Nodes: Represent currencies (e.g., USD, JPY, GBP, etc.).
+Edges: Represent conversion rates between currencies.
+
+
+*DFS for Maximum Conversion Rate
+The algorithm uses Depth-First Search (DFS) to explore all possible paths from the start currency to the end currency. During the traversal:
+It keeps track of the current rate by multiplying the rates along the path.
+It updates the maximum rate and the corresponding path whenever a better path is found.
+
+ 
+O(V + E) time complexity DFS visits each node exactly once, For each node, DFS explores all its outgoing edges
+
+O(V + E) to create the conversion graph

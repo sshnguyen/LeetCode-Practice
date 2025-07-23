@@ -1,0 +1,35 @@
+Design and implement an Excel Spreadsheet with object-oriented approach.
+
+You are building a library that a frontend team may use to surface a spreadsheet to some users. Don't worry about storing the data durably in a database. We want this to be an MVP library that can be expanded in the future if necessary. All data can be stored in memory.
+
+Functional requirements:
+PART1:
+We need to be able to view the spreadsheet, with both the raw and computed values shown. This does not have to look like a real spreadsheet, as long as the values are clear when printed.
+We need to support integer values and formula values for the plus operator. For example, cell values may be:
+
+     -9, 2, 3, 100, etc. (maximum of 3 digits per integer)
+     2+8, =100+2, etc. (with exactly two integers)
+We need to be able to reset cells to their default value, by giving the empty string.
+
+set(cell, value/expression)
+print() -> should print both raw and computed values.
+Example:
+set(A1, "=5+9+-8")
+set(A2, "5")
+
+
+PART 1: CLARIFYING QUESTIONS:
+*How are the cells address? is it always starting with a letter then a number?
+*CAn there be invalid formula like = 5++5? should we handle these invalid scenario by throwing error?
+*What is the default value if we reset it? is it null, 0?
+*we're going to store the default expression as raw value and evaluate lazily when print();
+
+
+Followup:
+Part2:
+We want to be efficient with real world memory usage. Keep in mind that most spreadsheets will be “sparse”, meaning that most cells in a spreadsheet will be empty. (Use a hashmap so if we don't have a value, we know it's default value is 0)
+We now want to support reference values, such as “=B2+B3”.
+
+PART 2: CLARIFYING QUESTIONS:
+* For cases where there's a cycle of reference for example A1 = B2+5, B2 = A1 + 1, how should we handle?
+*

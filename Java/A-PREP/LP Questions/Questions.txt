@@ -1,0 +1,180 @@
+Example 1: Learned React, Nodejs to develop a volunteer management app for an NGO, delivering the MVP ahead of schedule.
+
+*Example 2: Resolved a IEX API replacement by researching and integrating alternative financial APIs, ensuring seamless dashboard functionality within budget.
+
+*Example 3: Missed a volunteer project deadline due to underestimating task complexity and full-time job commitments;
+communicated promptly and collaborated with the team to complete the feature.
+
+*Example 4: Led the development of a web application for financial dashboard for credit officers, 
+collaborating with stakeholders and utilizing React and Node.js, resulting in streamlined workflows and reduced affirmation times.
+
+*Example 5: Improved library update efficiency by integrating a vulnerability scanning tool into the deployment pipeline, enhancing security and saving time.
+
+Example 6: Assisted a QA colleague unfamiliar with a project by providing knowledge transfer sessions and collaborative test case development,
+leading to a successful production release.
+
+Example 7: Reduced employee turnover in a salon business by focusing on skill development and fair commission distribution,
+ leading to increased customer and employee satisfaction.
+
+*Example 8: Supported a team decision to collaborate with an ELT team for data compliance, 
+despite initial reservations, resulting in successful audit compliance ahead of the deadline.
+
+Example 9: Proposed a hybrid data migration approach—automating bulk data transformation while integrating targeted manual validations
+
+*Example 10: Co-op delivering doctor re-approval process using survey gizmo. beating deadline expectation.
+
+Example 11: Database migration from mySQL to Oracle. Anticipated compatibilities issue, but logic and order of query filters I expected to stay the
+same. However doing the actual migration, i investigated some bottlenecks and found that mysql queries behaved differently in oralcle, requiring
+optimizations. After noticing, the change in complexity, I explain the challenges and revised the timeline. I kept my manager informed with
+daily updates. Dispite the inital confusion about the timeline, I was able to deliver this migration before the revised deadline. And all performance
+testing benchmark met. (index, optimizing join and select to only having fields we need. Filter data early with where and limit)
+
+
+
+ Tell me about a time when you had to learn a completely new skillset to accomplish current deliverables.
+*****ANSWER********EXAMPLE 1
+A whiel ago, I volunteered as a web developer for an NGO that helps relocate individuals escaping domestic abuse. They needed help to build an application
+to manage volunteers,informations, and itinerary of the moves.
+When I joined, we only had Figma designs outlining core functions like volunteer onboarding and move scheduling, but no implementation.
+We were given a soft six-month timeline to deliver an MVP. At the time, I had little experience, but the volunteer team is also in the same position,
+so I chose to stepped up as a core vontributor to the implementation of the application. I quickly learned React and Firebase by following tutorials 
+and building small components, which I then applied to the actual implementation. When breaking down Figma designs into actionable features, I also 
+researched open-source APIs to handle tasks like authentication and email services, presenting their pros and cons to the team and helping select the best
+solutions. I also participated in weekly meetings to prioritize tasks, share knowledge, and keep the team aligned with our goals.
+We successfully delivered the MVP ahead of schedule. During beta testing at the Halifax branch, the application received great feedback from volunteers,
+who reported that it significantly reduced the time needed to coordinate available volunteers for moves and they love that there's an electronic records for
+everything. Although I left the project after completing the MVP, I later heard from the project manager that the nonprofit was transitioning all branches to 
+using the application.
+
+
+
+LP2: Tell me about a time when you faced a roadblock. How did you approach it? Was it solved or not? What did you learn?
+*****ANSWER********EXAMPLE 2
+Recently, a third-party financial API that our financial dashboard application heavily depended on announced it would be decommissioned in two months.
+This was a significant challenge because the dashboard relied on this API for most of its data. and I was tasked to find a replacement
+that maintained all previous data points and functionalities while staying within the same price point. First thing I did was research to alternative APIs,
+No single API provider gives all the datasets that we are looking for, and the price would increase if we had to subcribe to multiple providers.
+I had approach the solution it in multiple different ways. First to try and find the API that best fit our need, I had to researching into
+external API as well as RBC in-house APIs comparing data points covered and cost. For data points that wasn't in the API, I proposed
+and implemented calculating the data from the raw datasets. To stay in budget, I also had to negociate with API providers for better pricing bundles.
+In the end, I successfully migrate to new data source without disrupting the dashboard functionality, and kept the price within budget.
+This experience taught me adaptability, and the importance of thoughrough research and the value of negotiating for what you need.
+
+
+Tell me about a time when you failed to meet a deadline. What did you learn?
+Tell me about a time when you fail to achieve something.
+*****ANSWER********EXAMPLE 3
+During my volunteer work as a web developer, I once took tasks that involved implementing some feature. During sprint planning, I estimated that I could 
+complete these tasks within our 2 weeks sprint time. However, I underestimated the complexity of the task, and while working on it, i realized it take significantly more
+time tto complete than I initially thought. Usually if I promised to do something, I will try to deliver it, even if it meant working more to make it up, 
+however, at this time, I had an important deliverable coming up for my full-time job. I had to prioritize my full time job, and I immediately communicated this
+to the volunteer team. I offer to mitigate this delay by breaking the feature up to smaller tasks and ask other volunteers if they can help with some of the
+smaller tasks without dependencies. Once I had more time after finishing up my full time job responsibilities, I work on the rest of the tasks to ensure the
+feature is completed. This experience of taught me the importance of of realistic time estimation, this mean deeply understand all the tasks that make up a
+feature, and proactive communication, because without it, the team would not be able to adjust and help and it would've cause even more delay.
+
+
+Tell me about a time when you took complete ownership of a project and ensured its success.
+*****ANSWER********EXAMPLE 4
+Two years ago, my team was tasked with creating a new web application to help credit officers track their portfolio of clients, monitor events 
+affecting their credit, and transition from paper-based quarterly affirmations to electronic record-keeping.
+I took complete ownership of the project because no one on the team had experience with the required technologies, React and Node.js.
+While I had some prior experience with these technologies from volunteer work, I saw this as an opportunity to build something from start to finish.
+To ensure the project success, I collaborated closely with business stakeholders to understand their pain point and requirements.
+I also research into external apis as well as collaborated with teams within RBC to leverage their tools for our need. I also led the development
+effort building key features. The application was successfully launched on time and received great feedback from directors and credit officers.
+ It streamlined their workflow, reducing the time spent on quarterly affirmations from weeks to just a few days.
+Due to the success of this project, the leadership are now planning a new initiative to leverage our existing data and build 
+a prediction/analysis dashboard to provide deeper insights into client portfolios. Our team has been chosen to lead this project,
+thanks to the credibility we earned from delivering the first application.
+
+
+*Additional: Describe a situation where you saw an opportunity to improve a process and took action.
+*****ANSWER********EXAMPLE 5
+When I first joined the company, I was tasked with updating a logging library from Log42 to Log4j2 due to a critical security issue. 
+During this process, I noticed that the way we updated libraries was highly inefficient. Developers would blindly pull versions from the internal
+package repository, often without checking for vulnerabilities, which required manual research to ensure the updated package was secure.
+Around this time, I came across an email from RBC promoting a new technology tool that could scan for vulnerabilities in packages.
+I realized this tool could fit our needs perfectly and saw the opportunity to improve our pipeline to include this tool to automate package
+vulnerabilities check. I discussed the tool with my manager and proposed using some of my time to explore and integrate it into our code deployment pipeline.
+After the approval, the integration itself was extremely easy. I shared the result with the team and they appreciate the streamlined process and it since
+become part of the pipeline in all projects in our team, saving time each time we had to update a package or add a new one.
+  
+
+LP1: Tell me about a time when you saw a peer struggling and how you helped them.
+*****ANSWER********EXAMPLE 6
+A co-worker on the QA team was assigned to test a change request I was working on, but he was struggling because this was a new project for him.
+There was added pressure because previous CRs he had tested in another project had encountered production issues.
+Recognizing that this project was new to the QA team and that he wouldn’t be able to get help from his usual team members, I made sure to give him
+additional support. I started by scheduling a KT session to walk him through the entire project, not just the part we were working on, to help him
+visualize the system. I encouraged him to reach out whenever he felt unsure, no matter how small the question might be, and collaborated with him
+to create test cases, showing him how I would approach testing and edge cases. Our QA team usally create their own test cases based on the requirements
+since it mostly involve testing in the front end, so seemed like overkill at the time, but what matter most was the result and the CR we
+worked on was successfully released to production without any issues. More importantly, the knowledge he gained from this experience allowed him
+to build confidence in his testing approach, and since then, I’ve worked with him on many CRs and together,we have a good record of not introducing prod issues.
+
+
+Tell me about a time when you went above and beyond to serve a customer. Why did you do it? How did it impact them?
+Additional: Describe a time when you found a simple solution to a complex problem.
+*****ANSWER********EXAMPLE 7
+I own a small salon business in toronto, which I had taken over in December 2023 and was looking to improve on current operations. 
+ One major challenge I identified was the high turnover rate among employees. The salon industry is highly seasonal, and to maximize revenue,
+the previous owner followed a strategy of over-hiring to ensure
+availability during peak times so no customers are turned away. However, this led to higher employees competition and earning lower commissions, 
+causing frequent turnover. I wanted to address this issue by creating a more stable and motivated team, I believe having that would translate to
+better service quality, customer loyalty. I discussed my concerns with the previous owner, who had experience running multiple successful salons. 
+They believed turnover wasn’t a problem and insisted that ensuring availability for every customer was the key to increasing revenue. I disagree with this
+approach, and instead of over-hiring, I focused on retaining and investing in my existing employees. I and the current manager, encourage skill development
+and ensure a fair comission distribution based on skill to keep employee motivated. After implementing this approach, I saw significant improvements. 
+In over a year of running the business, I retained 7 of the original 8 employees, compared to the previous owner's record of having 50 different employees
+in 3 years. The team also improved their overall skills, allowing them to provide more services. Although peak-time availability was slightly reduced,
+overall customer and employee satisfaction increased, leading to a more stable business
+
+
+
+Disagree and Commit
+Describe a situation where you had to move forward with a team decision you didn’t agree with. What did you do?
+*****ANSWER********EXAMPLE 8
+In our application, we had a batch job that ran daily to pull data from multiple sources into our tables. To meet audit compliance, our team needed to
+implement additional processes to ensure data accuracy, correctness, and failure alerts. The proposed solution was to collaborate with the ELT (extract, load, transform)
+team, which specialized in standardizing data transfers. My manager supported this approach because it meant shared ownership, dedicated monitoring, 
+and support for any compliance changes affecting data transfer job. While I understood the benefits, I advocated for keeping ownership within our team,
+as relying on ELT would introduce a dependency, slowing us down when making changes. For example, we would need to go through them for modifications, testing,
+and log retrieval. After discussing trade-offs, my manager acknowledged my concerns but ultimately decided to proceed with ELT for standardization.
+I committed to the decision and worked closely with ELT team to ensure a smooth transition. I also collaborated with them to implement the necessary audit 
+compliance processes. In the end, the collaboration proved beneficial—we leveraged ELT’s resources and monitoring capabilities, and the business
+was satisfied as we achieved audit requirements well ahead of the deadline.
+
+
+Tell me about a time when you had to disagree with your team’s approach and convince them.
+Give an example of when you identified potential issues that others overlooked and how you mitigated those risks.
+*****ANSWER********EXAMPLE 9
+
+Last year when RBC bought BSBC, our team to work on data migration from HSBC to RBC. We need to move all their clients
+and financials information relevant to our project to RBC.
+Some member thought the job would be simple and a automated script that would do everything parsing, transforming, validating, and loading the data.
+The idea is that the job would require very little manual labour.
+and if we find any new issue during testing, we could always update the job. However, I was concerned that a 
+fully automated process could easily fail if unexpected data issues arose. Since this is a critical task, and our testing
+and implementation windows were very small due to audits and the confidential nature of the data, 
+any failure in an automated run during these time would be an issue if we are not able to modify the code in time. 
+I proposed a hybrid approach: we would break the automation into multiple components. One part of the script would handle the bulk
+of the data transformation, such as parsing and formats. Then we'll create seperate job for different validations. Then any final check will be done manually.
+I was able to convince the team to start with this approach by highlighting the fact that this job need to be robust and data accuracy is more important
+than speed since ultimately it is a one-time job. When testing, we did discover a lot of unexpected data issue, and the seperation of concern allows
+us to quickly address the issue without having to run the entire process. In the end, the migration was implemented in production without issue.
+
+Tell me about a time when you went above and beyond customer needs.
+*****ANSWER********EXAMPLE 10
+
+During my co-op at the health network, I worked with a few nurses and HR responsible for getting doctors’ credentials re-approved.
+The process was entirely pen-and-paper, requiring doctors to fill out long forms, which led to delays 
+in collecting, storing, and managing the data.The nurses needed a more efficient way to collect this information, 
+but they weren’t sure what a digital solution should look like. I had about two months left in my co-op, which wasn’t enough time to 
+build a fully customized UI getting feedback, and go through testing. So to provide a quick yet flexible solution, I researched 
+existing tools and found Survey Gizmo, a platform for building forms with an API for data retrieval.
+By leveraging this tool, I created a template-based system where nurses could customize the forms as needed. 
+Meanwhile, I integrated the API to pull the required data for further processing. And work on the backend logic.
+This solution drastically reduced implementation time, and it was delivered before the end of my co-op. Which was way earlier than
+than the users expected, and made it in time for that year re-approval.
+

@@ -1,0 +1,42 @@
+Design a system to track song plays and generate analytics based on the number of unique listeners per song. Implement the SongAnalytics class with the following methods:
+
+1.SongAnalytics()
+Initializes the system.
+
+2.int add_song(string name)
+Adds a song to the system, assigns it a unique auto-incrementing ID starting from 1, and returns the assigned ID.
+
+3.void play_song(int song_id, int user_id)
+Records a play event for a song by a user.
+If song_id does not exist, output: Error: Song ID <song_id> does not exist. (replace <song_id> with the invalid ID).
+Each user is counted once per song, even if they play it multiple times.
+
+5.void print_analytics()
+Prints a summary of all songs sorted by the number of unique listeners in descending order.
+
+If two songs have the same number of unique listeners, sort them lexicographically by name in ascending order.
+Each line in the output should follow the format: <song_name> (<count> unique listeners).
+
+6. void last_three_played_song_titles(user_ID [integer]) 
+Returns the titles of the last three unique played songs for the given user (ordered, most recent first).
+  *extend to last k song?
+
+7. print_analytics() but for k most played songs, not all
+
+8.STAR/UNSTAR songs, get last k favourite songs
+
+
+
+PART 1: CLARIFICATION:
+* FOR ADD SONG, WHAT HAPPENS WHEN A SONG WITH THE SAME NAME IS ADDED TWICE? DO WE ADD A NEW SONG OR RETURN SONGID THAT ALREADY EXIST?
+* FOR PLAY SONG, WHAT HAPPENS IF A SONG THAT HASN'T BEEN ADDED YET IS PLAYED, SING_ID DOESN'T EXIST. THROW ERROR? CAN WE ASSUME USERID IS VALID?
+
+PART2: CLARIFYING QUESTIONS:
+* FOR LAST K played song, I assume it is unique songs
+
+* For k favourite songs, do we need to implement it so the data structure can be use for get k songs in the future?
+//This is the difference between creating a map of user to songs played vs user to favourite songs played.
+
+FOR LAST K played songs, we store a map of userID to a LinkedHashSet<Integer>> storing the song played for the user. We use
+LinkedList implementation of Set so we can keep the order of the songs, with the last element of the list being most recent.
+When a song is played, we can remove the song from the set, and readd it to maintain the order.

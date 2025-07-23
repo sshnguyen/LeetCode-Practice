@@ -1,0 +1,165 @@
+Instacart Payment Authorization System Design
+At Instacart, customers place orders online, and personal shoppers are assigned to fulfill those orders by purchasing groceries in-store. Instacart issues credit cards to shoppers to pay for these groceries.
+
+When a shopper swipes their Instacart-issued credit card at a store, the 3rd Party Payment Processor sends an HTTP request to Instacart’s server. The payload of this request contains:
+{
+  "shopper_id": 456,
+  "amount": 100.0,
+  "merchant": {
+    "name": "Safeway",
+    "address": "123 Main St"
+  }
+}
+Instacart’s server must synchronously respond within 1 second to either:
+200 OK (approve the transaction), or
+402 Payment Required (decline the transaction)
+
+Design Question
+If you are hired to lead a 3-person engineering team to build this system, how would you design the application that handles these payment authorization requests?
+
+In your answer, be sure to address:
+Physical infrastructure (e.g., cloud services, load balancers, redundancy)
+Data stores (e.g., databases or caching mechanisms)
+Data model (e.g., schema for orders, shoppers, merchants)
+Security (e.g., encryption, validation, authorization)
+Performance considerations (e.g., meeting the 1-second SLA, caching strategies)
+
+Assume for simplicity that:
+Each shopper has exactly one order at one merchant at a time.
+How would you design and implement this system to ensure correctness, reliability, and scalability?
+
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅ SOLUTION ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+✅Clarify System Requirements
+
+Functional Questions
+  1. What are the exact conditions for approving or rejecting a payment?
+    → System need to lookup order, merchant, shopper to check approval logic.
+  2. What should happen after a transaction is approved or declined?
+    → System need to write and update order status, log response for audit trails, ...ect
+  3. What happens if duplicate requests arrive (e.g., retries or double swipes)?
+    →System need to check for impodency
+  
+Non-Functional Questions:
+  1. What is the expected request load (e.g., peak RPS) we need to support?
+    ->scalability * important but not as important as availability, reliability and fault tolerance
+  2. What level of uptime is expected for the authorization service?
+    ->high availability, fault tolerance * very important
+  3. What are the expected SLA for a response after card swipe?
+    ->(1s), low latency response
+  4. What is the acceptable error rate for incorrect approvals or declines?
+    ->Reliability * very important
+
+READ vs WRITE:
+  READ: look up order and merchant to check for fraud and check approval logic. (few lookup)
+  WRITE: Every request we write to log response, order status update, alert downstream events... ect
+  
+  Both read and write heavy.
+
+✅ Define Assumptions and Scope
+  The above are what's in scope
+
+  what's out of scope:
+    * Support for multiple concurrent orders per shopper.
+    * Real-time notification or customer-facing alerting on authorization status.
+  
+✅Core entities (satisfy functional requirements)
+Table: Shoppers
+- id (PK)
+- name
+- status (active, suspended, etc.)
+- current_order_id (FK to Orders)
+- created_at
+- updated_at
+
+Table: Orders
+- id (PK)
+- shopper_id (FK to Shoppers)
+- merchant_id (FK to Merchants)
+- total_amount
+- status (pending, authorized, declined, fulfilled, etc.)
+- created_at
+- updated_at
+
+Table: Merchants
+- id (PK)
+- name
+- address
+- created_at
+- updated_at
+
+Table: AuthorizationRequests
+- id (PK)
+- shopper_id (FK)
+- order_id (FK)
+- merchant_id (FK)
+- requested_amount (Decimal)
+- decision (approved/declined)
+- reason (optional: reason for decline)
+- status (processed, failed, duplicate, etc.)
+- request_timestamp
+- response_timestamp
+
+
+
+
+
+
+
+
+
+
+
+2.Core entities (satisfy functional requirements)
+  Tables or Collections
+
+3. API(satisfy functional requirements)
+  GET /event/:eventId -> Event & Venue & Performer & List of Tickets
+  GET /search?term={term}&locattion={location}&type={type}&date={date} -> Lost of Events
+  POST /booking/reserve
+    header: sessionToken (userId not in body because it could be modify)
+    body:{ticketId}
+
+
+4. High level designs(satisfy functional requirements)
+  Talk about the system components
+  *CLIENT
+  *CDN CACHE
+  *API GATEWAY
+  *MICROSERVICES TO SERVE API
+  *PRIMARY DATABASE (SQL VS NOSQL)
+  *CACHE DATABASE (REDIS)
+  *SECONDARY DATABASE(For example ELASTIC search to handle search terms more efficiently)
+  *MESSAGING QUEUES (KAFTA)
+  *EXTERNAL SERVICES (STRIPE PAYMENT...ect.)
+
+5.Deep dives (satisfy non-functional requirements)
+Non-Functional Requirement	What to Consider / Do
+
+*Scalability	- Use load balancers (API Gateway, Nginx, ELB, etc.).
+- Scale horizontally (multiple instances) rather than vertically G.
+- Use distributed databases and sharding strategies.Splitting large databases into smaller partitions (shards) for horizontal scaling.
+- Implement caching (Redis, CDN) for frequently accessed data.
+*High Availability (HA)	- Deploy services across multiple regions and availability zones.
+- Use database replication (primary-replica or multi-master setup).
+- Implement failover mechanisms and automated recovery.
+*Low Latency	- Use in-memory storage (Redis, Memcached) for caching.
+- Optimize database queries (indexing, partitioning).
+- Use asynchronous processing (Kafka, RabbitMQ) for non-essential tasks.
+*Consistency vs Availability (CAP Theorem)	- Determine where eventual consistency is acceptable (e.g., chat history sync).
+- Ensure strong consistency where needed (e.g., message ordering per chat).
+- Use quorum-based writes (e.g., DynamoDB, Cassandra) for balance.
+*Reliability & Fault Tolerance	-
+- Database read from replicas database
+- Design for graceful degradation in case of failures.
+*Message Ordering & Delivery Guarantees	- Use message queues (Kafka with partitioning) to ensure ordering.
+- Implement exactly-once processing for message delivery.
+- Use timestamp-based ordering with vector clocks or Lamport timestamps.
+*Data Storage & Retention	- Use a hybrid SQL + NoSQL approach for structured/unstructured data.
+- Archive old data in cold storage to reduce DB load.
+- Implement proper TTL (Time-to-Live) policies for messages.
+*Security	- Use OAuth2 / JWT for authentication.
+- Encrypt messages end-to-end (E2EE) where applicable.
+- Apply rate limiting and API security measures (WAF, DDoS protection).
+Observability (Logging & Monitoring)	- Implement centralized logging (ELK Stack, CloudWatch, Prometheus).
+- Use distributed tracing (Jaeger, Zipkin) to track message flows.
+- Set up proactive alerts for system health monitoring.

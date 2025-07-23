@@ -1,0 +1,34 @@
+CodeSignal offers a feature called "filesystem questions," which allows candidates to interact with a virtual file system during assessments. These questions can be structured progressively across multiple levels, each introducing additional complexity.
+
+Level 1: Basic File Operations
+Objective: Implement fundamental file operations.
+Requirements:
+Create File: Ability to create a new file in a specified directory.
+Delete File: Remove an existing file.
+Move File: Move a file from one directory to another.
+
+
+Level 2: Directory Management
+Objective: Enhance the system to handle directories.
+Requirements:
+Create Directory: Ability to create new directories.
+List Contents: List all files and subdirectories within a directory.
+Delete Directory: Remove a directory and its contents.
+
+
+Level 3: File Metadata and Permissions
+Objective: Introduce file metadata and permission handling.
+Requirements:
+Set Permissions: Assign read/write/execute permissions to files and directories.
+View Metadata: Retrieve information such as file size, creation date, and last modified date.
+Permission Validation: Ensure operations respect the set permissions.
+
+
+Level 4: Advanced Features
+Objective: Incorporate advanced file system functionalities.
+Requirements:
+Search Functionality: Implement search to find files/directories by name or metadata.
+Symbolic Links: Support creation and resolution of symbolic links.
+Disk Quotas: Enforce storage limits for directories or users.
+For more insights into creating and configuring filesystem questions in CodeSignal, you can refer to their Knowledge Base and blog post.
+

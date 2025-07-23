@@ -1,0 +1,12 @@
+// 1 coding question with multiple parts of 1 hour. I solved 4 parts with working code and passed all test cases.
+// Communication is also judged.
+
+// Part 1: Design and code an interleaving iterator. Given 2 arrays output the elements in interleaving order.
+// array1 = [1,2,3] and array2 = [4,5,6] -> result = [1,4,2,5,3,6]
+
+// Part 2: Design a range-based iterator with a given start, end and step value.
+// (1, 10, 2) -> [1,3,5,7,9]
+
+// Part 3: Design interleaving iterator with a list of iterators
+
+// Part 4: Add a filter function to interleaving iterators

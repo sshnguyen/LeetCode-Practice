@@ -1,0 +1,116 @@
+1. Clarify Requirements
+
+1.1Ask Functional Questions (User should be able to?):
+  - User shoud be able to BOOK TICKET
+  - To book a ticket a user should be able to VIEW AN event
+  - Users should be able to SEARCH FOR AN EVENTS
+
+1.2Ask Non-Functional Questions:
+
+-In context of CAP theorem, prioritize consistency >> availability (no double booking)
+(better answer since they can co-exist, in different microservice of the system)
+-Strong consistency for booking tickets (no double booking)
+-low latency search
+-High availability for search and viewing event (fine if it isnt up to date for a bit)
+-read >> write (maybe 100: 1. People view more than buying)
+-scalability to handle surges from popular events
+
+1.3 Define Assumptions and Scope
+
+- Out of scope
+  -fault tolerance
+  -other functions like adding events
+
+These requirements are what I would prioritize, and these are what i think are
+out of scope. Would you like me to repriorize any of this requirement?
+
+2.Core entities (satisfy functional requirements)
+  -Events - id, venueId, performerId name, description, tickets[]
+  -Venue - id, location, seatMap
+  -Performer - id, name
+  -Ticket- id, eventId, seat, price, staus:available, reserved,booked,
+
+
+3. API(satisfy functional requirements)
+  -User facing API
+
+  GET /event/:eventId -> Event & Venue & Performer & List of Tickets
+  GET /search?term={term}&locattion={location}&type={type}&date={date} -> Lost of Events
+  POST /booking/reserve
+    header: sessionToken (userId not in body because it could be modify)
+    body:{ticketId}
+  PUT /booking/confirm
+    {ticketId
+      paymentDetails(Stripe)
+    }
+
+4. High level designs(satisfy functional requirements)
+
++----------+ 
+| CLIENT  |  
++----------+
+
++----------+ 
+| API GATEWAY | 
++----------+
+*responsibility is to take incoming api request and ROUTE them to correct server
+*Rate limiting
+*Authentication
+
++---------------------+ 
+| SEARCH SERVICE 
++---------------------+
++---------------------+ 
+| EVENT CRUDE SERVICE 
++---------------------+
++---------------------+ 
+| BOOKING SERICE 
++---------------------+
+* microservices
+Talk about how it interact with the database, redis, stripe to return the requirement
+data back. 
+
++----------+ 
+| DATABASE | 
++----------+
+* I would choose to use SQL database like oracle, mysql because that's what I'm
+* more familiar with and it sastisfy the requirement for ACID properties on
+* tickets allow for safe transaction. NoSQL database could also work as modern
+* databases have ACID property.
+
+* Here we can talk about the schema of the entities listed in part 2.
+* Then refer to the APIs to see what field each entities need to work
+* Flesh out the properties of each and their relationship between entities.
+
++----------+ 
+| STRIPE | 
++----------+
+* abstract out the payment methods to external tools
+
++----------+ 
+| Ticket Lock | 
++----------+
+* REDIS {ticketId: true} (TTL of 10 minute. deleted after 10 minutes)
+* THis so we don't have to update the table for reserved timestamp
+
+
+
+5.Deep dives (satisfy non-functional requirements)
+*Low latency search - optimized database like elasticsearch(inverted indexes for search term) 
+                      making very fast and efficient to query for events using search terms
+We need logic to update our secondary database like elastic search when primary database is updated
+
+*read >> write. CDN between api gateway and clients caches results for popular events APIs that
+all users should have the same results for. Super fast, less call to the same API.
+Doesn't work well if searched api have lots of permutations, or we search is
+personalized, and results is not the same between users.
+
+* scalability to handle surges from popular events. Virtual waiting queue
+implemented by redis queue sorted set, or random... ect
+
+* Read >> write, use AWS API gateway for the API gateway, which has its own
+load balancer so it's scaling. The microservices could have its own load balancer
+and dynamically scale based on memory consumption or cpu consumption so
+scale horizontically.
+
+*Calculate the math using storage math. Then scale on sharding, horizontally, or vertically.

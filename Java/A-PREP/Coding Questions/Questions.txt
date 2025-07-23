@@ -1,0 +1,8 @@
+ 
+ Coinbase:
+ITERATOR
+MONEY change
+PAGINATION
+NFT UNIQUE
+STOCK EXCHANGE (DESIGN ORDERBOOK...)
+Design a stock dashboard showing live prices of assests (DESIGN LIVE STOCK PRICE UPDATE)

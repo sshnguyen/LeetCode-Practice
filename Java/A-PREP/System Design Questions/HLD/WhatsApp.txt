@@ -1,0 +1,164 @@
+1. Clarify Requirements
+1.1 Ask Functional Questions (User should be able to?):
+
+  *Send and receive messages
+  *online and offline status
+  *Support one-on-one and group messaging.
+  *Send multimedia (images, videos, audio).
+  *Support push notifications for new messages.
+  *Allow user authentication via phone number.
+
+1.2 Ask Non-Functional Questions:
+
+High availability: Users should not experience downtime.
+
+*Low latency: Messages should be delivered as fast as possible
+*Consistency vs Availability (CAP Theorem): Prioritize partition tolerance & availability over strong consistency (
+eventual consistency works for messaging, except for message sequence ordering, which needs strong consistency per chat).
+*Scalability: Handle millions of concurrent users.
+*Read-heavy system: Users fetch messages more frequently than they send.
+Reliability: Messages should not be lost, even if a client temporarily disconnects.
+
+1.3 Define Assumptions and Scope
+
+Out of Scope:
+
+*End-to-end encryption details (assumed to be handled at the application layer).
+*Video and voice calling (focus on text messaging).
+*Would you like me to reprioritize any of these requirements?
+
+2. Core Entities
+
+*User: id, phoneNumber, username, profilePicture, lastSeen, status.
+*Message: id, senderId, receiverId, content, timestamp, status (sent, delivered, read).
+*Chat: id, participants[], lastMessageId, type (one-on-one or group).
+*Group: id, name, participants[], adminId, messages[].
+*Notification: id, userId, type (message, system alert), timestamp.
+
+3. APIs
+
+*User APIs:
+POST /register - body:{phoneNumber}
+
+GET /user/:userId - Fetch user details.
+
+*Messaging APIs:
+POST /message/send  -> message id, status of message success or not
+Header: sessionToken
+Body: {receiverId, content, type}
+
+
+GET /message/fetch?chatId={chatId}&fromTimestamp={timestamp} - Get chat history.
+
+*Presence & Notification APIs:
+POST /user/status/update - Update online/offline status.
+
+GET /notification/fetch - Get unread notifications.
+
+4. High-Level Design
+
+System Components
+
++-------------+
+| CLIENT (App) |
++-------------+
+
+Sends/receives messages
+
+Manages local storage & UI
+
++-----------------+
+| API GATEWAY     |
++-----------------+
+
+Routes requests to services
+
+Rate limiting
+
+Authentication
+
++-----------------+
+| CHAT SERVICE    |
++-----------------+
+
+Handles message delivery
+
+Writes messages to database
+
+Communicates with Notification Service
+
++---------------------+
+| MESSAGE QUEUE      |
++---------------------+
+
+Ensures reliable message delivery
+
+Stores undelivered messages
+
++-----------------+
+| NOTIFICATION SERVICE |
++-----------------+
+
+Push notifications
+
+Tracks unread messages
+
++-----------------+
+| PRESENCE SERVICE |
++-----------------+
+
+Tracks online/offline status
+
+Uses WebSockets for real-time updates
+
++-----------------+
+| DATABASE        |
++-----------------+
+
+Stores users, messages, chats
+
+SQL (for relational integrity) + NoSQL (for scalability)
+
++-----------------+
+| CACHE (REDIS)   |
++-----------------+
+
+Caches recent messages
+
+Manages presence & message queue
+
+5. Deep Dives
+
+*Load Balancing & Scalability
+
+API Gateway: AWS API Gateway or Nginx with round-robin balancing.
+
+Horizontally scalable microservices: Auto-scale based on CPU/memory.
+
+*Read-heavy optimization: Use Redis & CDN to cache frequently accessed data.
+
+*Microservice Communication
+
+Message Queue (Kafka/RabbitMQ): Handles async message delivery. Ensure message delivery during failures.
+
+gRPC/WebSockets: Ensures low-latency real-time messaging.
+
+*Notification Services
+
+Push notifications via Firebase/APNS.
+
+Stores unread message count in Redis for quick retrieval.
+
+*Message Queuing & Reliability
+
+Kafka for reliable message streaming.
+
+Message retries & dead-letter queues to avoid message loss.
+
+*Database Sharding & Storage
+
+Sharding messages by chatId to distribute load across multiple DB nodes.
+
+*Database Replication & Failover Mechanism
+Use Primary-Replica Replication: If the primary database fails, a replica takes over.
+Deploy database accross multiple region. For Fault Tolerance, data is always available even if primary data fails
