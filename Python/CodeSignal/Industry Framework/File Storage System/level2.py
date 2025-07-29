@@ -56,7 +56,7 @@ def main():
         ["ADD_FILE", "/dir/deeper/file3.mov", "9"],
         ["GET_N_LARGEST", "/dir", "2"],
         ["GET_N_LARGEST", "/dir/file", "1"],
-        ["GET_N_LARGEST", "/another_dir", "file.txt"],
+        ["GET_N_LARGEST", "/another_dir", "2"],
         ["ADD_FILE", "/big_file.mp4", "20"],
         ["GET_N_LARGEST", "/", "2"]
     ]
