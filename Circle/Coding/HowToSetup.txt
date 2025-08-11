@@ -1,0 +1,17 @@
+# 3. Install dependencies using pip3
+pip3 install -r requirements.txt
+
+# 4. Install PostgreSQL
+brew install postgresql
+
+# 5. Start PostgreSQL
+brew services start postgresql
+
+#create postgres superuser
+createuser -s postgres
+
+# 6. Run database setup
+python3 setup_db.py
+
+# 7. Run the Flask app
+python3 app.py
